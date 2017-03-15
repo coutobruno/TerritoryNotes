@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color="app">
+    <ion-title>Editar {{residentName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="updateResidentForm" (submit)="updateResident()" novalidate>
+    <ion-item>
+      <ion-label floating>Nome</ion-label>
+      <ion-input #name formControlName="name" type="text" [class.invalid]="!updateResidentForm.controls.name.valid && updateResidentForm.controls.name.dirty">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!updateResidentForm.controls.name.valid && updateResidentForm.controls.name.dirty">
+      <p>Digita por favor o nome do residente.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Endereço</ion-label>
+      <ion-input #number formControlName="address" type="text" [class.invalid]="!updateResidentForm.controls.number.valid && updateResidentForm.controls.number.dirty">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!updateResidentForm.controls.number.valid && updateResidentForm.controls.number.dirty">
+      <p>Digita por favor o endereço.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Número</ion-label>
+      <ion-input #number formControlName="number" type="text" [class.invalid]="!updateResidentForm.controls.number.valid && updateResidentForm.controls.number.dirty">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!updateResidentForm.controls.number.valid && updateResidentForm.controls.number.dirty">
+      <p>Digita por favor o número.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Andar</ion-label>
+      <ion-input #number formControlName="floor" type="text" [class.invalid]="!updateResidentForm.controls.number.valid && updateResidentForm.controls.number.dirty">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!updateResidentForm.controls.number.valid && updateResidentForm.controls.number.dirty">
+      <p>Digita por favor o andar.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Código Postal</ion-label>
+      <ion-input #number formControlName="npa" type="text" [class.invalid]="!updateResidentForm.controls.number.valid && updateResidentForm.controls.number.dirty">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!updateResidentForm.controls.number.valid && updateResidentForm.controls.number.dirty">
+      <p>Digita por favor o Código Postal.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Localidade</ion-label>
+      <ion-input #number formControlName="location" type="text" [class.invalid]="!updateResidentForm.controls.number.valid && updateResidentForm.controls.number.dirty">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!updateResidentForm.controls.number.valid && updateResidentForm.controls.number.dirty">
+      <p>Digita por favor a localidade.</p>
+    </ion-item>
+
+    <button ion-button block color="app" type="submit">Actualisar Residente</button>
+  </form>
+</ion-content>

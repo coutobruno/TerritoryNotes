@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar color="app">
+    <ion-title>Territórios</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="moreAppOption()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-card *ngFor="let territory of territoryList | async" (press)="moreTerritoryOption(territory.$key)" (click)="showTerritoryResidents(territory.$key)">
+      <ion-card-header>
+        <h2>{{territory.number}} - {{territory.name}}</h2>
+      </ion-card-header>
+    </ion-card>
+  </ion-list>
+  <ion-fab bottom right>
+    <button ion-fab icon-only color="app" (click)="createTerritory()">
+    <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>  
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="app">
+    <ion-title>Visitas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-list>
+    <ion-card *ngFor="let visit of visitsList | async">
+      <ion-card-header>
+        <ion-row>
+          <ion-col>
+            <h3>{{visit.date | date:'dd.MM.yyyy HH:mm'}}</h3>
+          </ion-col>
+          <ion-col>
+            <h3>{{visit.result}}</h3>
+          </ion-col>
+        </ion-row>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{visit.remarks}}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab icon-only color="app" (click)="addVisit()">
+    <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

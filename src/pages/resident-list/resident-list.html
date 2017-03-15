@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="app">
+    <ion-title>{{territoryNumber}} - Lista dos Residentes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-list>
+    <ion-card *ngFor="let resident of residentsList | async" (press)="moreResidentOption(resident.$key)" (click)="showResidentVisits(resident.$key)">
+      <ion-card-header>
+        <ion-row>
+          <ion-col>
+            <h2>{{resident.name}}</h2>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h3>{{resident.address}} {{resident.number}}</h3>
+          </ion-col>
+          <ion-col>
+            <h3>{{resident.npa}} {{resident.location}}</h3>
+          </ion-col>
+        </ion-row>        
+      </ion-card-header>
+    </ion-card>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab icon-only color="app" (click)="addResident(territoryId)">
+    <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

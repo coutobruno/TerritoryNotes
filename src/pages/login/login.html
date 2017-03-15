@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="app">
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="logo" align="center">
+    <img src="https://spacelabsarl-my.sharepoint.com/personal/bruno_couto_spacelab_swiss/_layouts/15/guestaccess.aspx?docid=001a6234694924504a5e331fd8cf1ff67&authkey=AYn756GHvrwo6NTLG5Opn8Y">
+  </div>
+
+  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)" placeholder="Email"
+                 [class.invalid]="!loginForm.controls.email.valid && (emailChanged || submitAttempt)"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid && (emailChanged || sibmitAttempt)">
+      <p>
+        Digita o teu endereço email
+      </p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input #password formControlName="password" type="password" (change)="elementChanged(password)" placeholder="Password"
+                 [class.invalid]="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)">
+      <p>
+        Digita a tua password
+      </p>
+    </ion-item>
+
+    <button ion-button block color="app" type="submit">Entrar</button>
+
+  </form>
+
+  <button ion-button block clear color="app" (click)="goToResetPassword()">Esqueci-me da password</button>
+
+</ion-content>
