@@ -7,14 +7,14 @@
 <ion-content padding>
 
   <div class="logo" align="center">
-    <img src="https://spacelabsarl-my.sharepoint.com/personal/bruno_couto_spacelab_swiss/_layouts/15/guestaccess.aspx?docid=001a6234694924504a5e331fd8cf1ff67&authkey=AYn756GHvrwo6NTLG5Opn8Y">
+    <img src="img/logo-green-beta/256x256.png">
   </div>
 
   <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
 
     <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)" placeholder="Email"
+      <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)"
                  [class.invalid]="!loginForm.controls.email.valid && (emailChanged || submitAttempt)"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid && (emailChanged || sibmitAttempt)">
@@ -25,7 +25,7 @@
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input #password formControlName="password" type="password" (change)="elementChanged(password)" placeholder="Password"
+      <ion-input #password formControlName="password" type="password" (change)="elementChanged(password)"
                  [class.invalid]="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)">
