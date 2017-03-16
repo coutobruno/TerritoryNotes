@@ -1,18 +1,47 @@
-<!--
-  Generated template for the VisitDetail page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>VisitDetail</ion-title>
+  <ion-navbar color="app">
+    <ion-title>Nova Visita</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
+  <form [formGroup]="updateVisitForm" (submit)="updateVisit()" novalidate>
+    <ion-item>
+      <ion-label floating>Data</ion-label>
+      <ion-datetime #date displayFormat="YYYY MMM D HH:mm" pickerFormat="YYYY MMM D HH:mm" formControlName="date"
+                  [class.invalid]="!updateVisitForm.controls.date.valid && updateVisitForm.controls.date.dirty"
+                  monthShortNames="jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez">
+      </ion-datetime>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!updateVisitForm.controls.date.valid && (dateChanged || submitAttempt)">
+      <p>Digita uma data</p>
+    </ion-item>
 
+    <ion-item>
+      <ion-label floating>Resultado</ion-label>
+      <ion-select formControlName="result">
+        <ion-option>Não estava interessado</ion-option>
+        <ion-option>Não estava em casa</ion-option>
+        <ion-option>Espreitou</ion-option>
+        <ion-option>Não tinha tempo</ion-option>
+        <ion-option>Esteve na visita</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!updateVisitForm.controls.result.valid && updateVisitForm.controls.result.dirty">
+      <p>Escolhe o resultado mais apropriado</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Observações</ion-label>
+      <ion-textarea rows="10" #remarks formControlName="remarks" type="text"
+                  [class.invalid]="!updateVisitForm.controls.remarks.valid && updateVisitForm.controls.remarks.dirty">
+      </ion-textarea>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!updateVisitForm.controls.remarks.valid && updateVisitForm.controls.remarks.dirty">
+      <p>Acresenta umas Observações</p>
+    </ion-item>
+
+    <button ion-button block color="app" type="submit">Atualisar a visita</button>
+  </form>
 </ion-content>
