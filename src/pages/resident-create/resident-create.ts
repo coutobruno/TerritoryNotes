@@ -21,7 +21,7 @@ export class ResidentCreatePage {
       name: ['', Validators.required],
       address: ['', Validators.required],
       number: ['', Validators.required],
-      floor: ['', Validators.required],
+      floor: ['',],
       npa: ['', Validators.required],
       location: ['', Validators.required]
     });

@@ -9,7 +9,7 @@
   <form [formGroup]="updateVisitForm" (submit)="updateVisit()" novalidate>
     <ion-item>
       <ion-label floating>Data</ion-label>
-      <ion-datetime #date displayFormat="YYYY MMM D HH:mm" pickerFormat="YYYY MMM D HH:mm" formControlName="date"
+      <ion-datetime #date displayFormat="D MMM YYYY HH:mm" pickerFormat="YYYY MMM D HH:mm" formControlName="date"
                   [class.invalid]="!updateVisitForm.controls.date.valid && updateVisitForm.controls.date.dirty"
                   monthShortNames="jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez">
       </ion-datetime>
