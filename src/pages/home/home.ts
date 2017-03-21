@@ -34,13 +34,21 @@ export class HomePage {
     let action = this.actionCtrl.create({
       buttons: [
         {
-          text: 'Perfil',
-          icon: !this.platform.is('ios') ? 'person' : null,
-          handler: () => {}
-        },{
-          text: 'Territory Note',
+          text: 'Aplicativo',
           icon: !this.platform.is('ios') ? 'apps' : null,
-          handler: () => {}
+          handler: () => {
+            let alert = this.alertCtrl.create({
+              title: 'Versão do Territory Notes',
+              subTitle: '0.1.0',
+              buttons: [
+                {
+                  text: 'Fechar',
+                  role: 'cancel'
+                }
+              ]
+            });
+            alert.present();
+          }
         }
       ]
     });

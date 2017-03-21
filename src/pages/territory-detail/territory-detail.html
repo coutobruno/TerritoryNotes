@@ -6,42 +6,54 @@
 
 
 <ion-content padding>
-  <form [formGroup]="updateTerritoryForm" (submit)="modifyTerritory()" novalidate>
-    <ion-item>
-      <ion-label floating>Nome</ion-label>
-      <ion-input #name formControlName="name" type="text"
-                  [class.invalid]="!updateTerritoryForm.controls.name.valid && updateTerritoryForm.controls.name.dirty">
-      </ion-input>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!updateTerritoryForm.controls.name.valid && updateTerritoryForm.controls.name.dirty">
-      <p>Digita por favor um nome para o território.</p>
-    </ion-item>
 
-    <ion-item>
-      <ion-label floating>Numero</ion-label>
-      <ion-input #number formControlName="number" type="text"
-                  [class.invalid]="!updateTerritoryForm.controls.number.valid && updateTerritoryForm.controls.number.dirty">
-      </ion-input>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!updateTerritoryForm.controls.number.valid && updateTerritoryForm.controls.number.dirty">
-      <p>Digita por favor o numero do território.</p>
-    </ion-item>
+<form [formGroup]="updateTerritoryForm" (submit)="modifyTerritory()" novalidate>
 
-    <ion-item>
-      <ion-label floating>Grupo</ion-label>
-      <ion-select formControlName="group">
-        <ion-option>Fribourg</ion-option>
-        <ion-option>Fribourg-Norte</ion-option>
-        <ion-option>Marly</ion-option>
-        <ion-option>Matran</ion-option>
-        <ion-option>Morat</ion-option>
-        <ion-option>Schönberg</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!updateTerritoryForm.controls.group.valid && updateTerritoryForm.controls.group.dirty">
-      <p>O território tem que ser designado a um grupo</p>
-    </ion-item>
+    <ion-row>
+      <ion-col col-9>
+        <ion-item>
+          <ion-label floating>Nome</ion-label>
+          <ion-input #name formControlName="name" type="text" [class.invalid]="!updateTerritoryForm.controls.name.valid && updateTerritoryForm.controls.name.dirty">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3>
+        <ion-item>
+          <ion-label floating>No</ion-label>
+          <ion-input #number formControlName="number" type="text" [class.invalid]="!updateTerritoryForm.controls.number.valid && updateTerritoryForm.controls.number.dirty">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-    <button ion-button block color="app" type="submit">Actualisar território</button>
+    <ion-row>
+      <ion-item>
+        <ion-label floating>Grupo</ion-label>
+        <ion-select cancelText="Cancelar" #group formControlName="group" [class.invalid]="!updateTerritoryForm.controls.group.valid && updateTerritoryForm.controls.group.dirty">
+          <ion-option>Fribourg</ion-option>
+          <ion-option>Fribourg-Norte</ion-option>
+          <ion-option>Marly</ion-option>
+          <ion-option>Matran</ion-option>
+          <ion-option>Morat</ion-option>
+          <ion-option>Schönberg</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+
+    <ion-row>
+      <ion-item no-lines class="error-message" *ngIf="!updateTerritoryForm.controls.name.valid && updateTerritoryForm.controls.name.dirty">
+        <p>Falta o nome do território</p>
+      </ion-item>
+
+      <ion-item no-lines class="error-message" *ngIf="!updateTerritoryForm.controls.number.valid && updateTerritoryForm.controls.number.dirty">
+        <p>Falta o numero do território</p>
+      </ion-item>
+
+      <ion-item no-lines class="error-message" *ngIf="!updateTerritoryForm.controls.group.valid && updateTerritoryForm.controls.group.dirty">
+        <p>O território tem que ser designado a um grupo</p>
+      </ion-item>
+    </ion-row>
+
+    <button ion-button block color="app" type="submit">Actualisar o território</button>
   </form>
 </ion-content>
