@@ -6,16 +6,14 @@
 
 
 <ion-content padding>
+
   <form [formGroup]="updateVisitForm" (submit)="updateVisit()" novalidate>
+
     <ion-item>
       <ion-label floating>Data</ion-label>
-      <ion-datetime #date displayFormat="D MMM YYYY HH:mm" pickerFormat="YYYY MMM D HH:mm" formControlName="date"
-                  [class.invalid]="!updateVisitForm.controls.date.valid && updateVisitForm.controls.date.dirty"
-                  monthShortNames="jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez">
+      <ion-datetime #date displayFormat="D MMM YYYY HH:mm" pickerFormat="YYYY MMM D HH:mm" formControlName="date" [class.invalid]="!updateVisitForm.controls.date.valid && updateVisitForm.controls.date.dirty"
+        monthShortNames="jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez">
       </ion-datetime>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!updateVisitForm.controls.date.valid && (dateChanged || submitAttempt)">
-      <p>Digita uma data</p>
     </ion-item>
 
     <ion-item>
@@ -28,18 +26,20 @@
         <ion-option>Esteve na visita</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item class="error-message" *ngIf="!updateVisitForm.controls.result.valid && updateVisitForm.controls.result.dirty">
-      <p>Escolhe o resultado mais apropriado</p>
-    </ion-item>
 
     <ion-item>
       <ion-label floating>Observações</ion-label>
-      <ion-textarea rows="10" #remarks formControlName="remarks" type="text"
-                  [class.invalid]="!updateVisitForm.controls.remarks.valid && updateVisitForm.controls.remarks.dirty">
+      <ion-textarea rows="10" #remarks formControlName="remarks" type="text" [class.invalid]="!updateVisitForm.controls.remarks.valid && updateVisitForm.controls.remarks.dirty">
       </ion-textarea>
+
+      <!-->Error Messages <-->
+        <ion-item class="error-message" *ngIf="!updateVisitForm.controls.date.valid && (dateChanged || submitAttempt)">
+          <p>Falta a data</p>
+        </ion-item>
+
     </ion-item>
-    <ion-item class="error-message" *ngIf="!updateVisitForm.controls.remarks.valid && updateVisitForm.controls.remarks.dirty">
-      <p>Acresenta umas Observações</p>
+    <ion-item class="error-message" *ngIf="!updateVisitForm.controls.result.valid && newVisitForm.controls.result.dirty">
+      <p>Falta o resultado</p>
     </ion-item>
 
     <button ion-button block color="app" type="submit">Atualisar a visita</button>
