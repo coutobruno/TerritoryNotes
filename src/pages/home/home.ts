@@ -109,7 +109,7 @@ export class HomePage {
           handler: () => {
             let alert = this.alertCtrl.create({
               title: 'Versão do Territory Notes',
-              subTitle: '0.1.0',
+              subTitle: '0.2.1',
               buttons: [
                 {
                   text: 'Fechar',
