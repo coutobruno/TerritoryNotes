@@ -15,6 +15,7 @@ export class TerritoryData {
   visitsList: FirebaseListObservable<any>;
   visitDetail: FirebaseObjectObservable<any>;
   userId: string;
+  territoryListByGroups: FirebaseListObservable<any>;
 
   constructor(public af: AngularFire) {
     af.auth.subscribe( auth => {
@@ -39,6 +40,16 @@ export class TerritoryData {
   // Get a specific territory
   getTerritory(territoryId: string): FirebaseObjectObservable<any> {
     return this.territoryDetail = this.af.database.object('/Territory/' + territoryId);
+  }
+
+  // Get territories by groups
+  getTerritoriesByGroups(territoryGroups: any): any {
+    return this.territoryListByGroups = this.af.database.list('/Territory/', {
+      query: {
+        orderByChild: 'group',
+        equalTo: territoryGroups
+      }
+    });
   }
 
   // Add new territory

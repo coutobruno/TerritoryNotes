@@ -2,6 +2,9 @@
   <ion-navbar color="app">
     <ion-title>Territórios</ion-title>
     <ion-buttons end>
+      <button ion-button icon-only (click)="filterTerritoriesByGroups()">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
       <button ion-button icon-only (click)="moreAppOption()">
         <ion-icon name="more"></ion-icon>
       </button>
@@ -15,6 +18,9 @@
       <ion-card-header>
         <h2>{{territory.number}} - {{territory.name}}</h2>
       </ion-card-header>
+      <ion-card-content>
+        <h2>Grupo : {{territory.group}}</h2>
+      </ion-card-content>
     </ion-card>
   </ion-list>
   <ion-fab bottom right>

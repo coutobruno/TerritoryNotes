@@ -13,9 +13,10 @@ import { ActionSheetController, NavController, Platform, AlertController } from 
 export class HomePage {
 
   public territoryList: any;
+  public territoryByGroups: any;
 
   constructor(public navCtrl: NavController, public territoryData: TerritoryData, public actionCtrl: ActionSheetController, public platform: Platform, public alertCtrl: AlertController) {
-
+    this.territoryByGroups = 'Todos';
     this.territoryList = this.territoryData.getTerritoryList();
   }
 
@@ -26,11 +27,80 @@ export class HomePage {
 
   // Show specific territory Residents
   showTerritoryResidents(territoryId: string): void {
-     this.navCtrl.push(ResidentListPage, {territoryId: territoryId});
+    this.navCtrl.push(ResidentListPage, { territoryId: territoryId });
+  }
+
+  // Filter territories by group
+  filterTerritoriesByGroups() {
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Escolhe o grupo');
+
+    if (this.territoryByGroups == 'Todos')
+    {
+      alert.addInput({ type: 'radio', label: 'Todos', value: 'Todos', checked: true });
+    } else {
+      alert.addInput({ type: 'radio', label: 'Todos', value: 'Todos', checked: false });
+    }
+
+    if (this.territoryByGroups == 'Fribourg')
+    {
+      alert.addInput({ type: 'radio', label: 'Fribourg', value: 'Fribourg', checked: true });
+    } else {
+      alert.addInput({ type: 'radio', label: 'Fribourg', value: 'Fribourg', checked: false });
+    }
+
+    if (this.territoryByGroups == 'Fribourg-Norte')
+    {
+      alert.addInput({ type: 'radio', label: 'Fribourg-Norte', value: 'Fribourg-Norte', checked: true });
+    } else {
+      alert.addInput({ type: 'radio', label: 'Fribourg-Norte', value: 'Fribourg-Norte', checked: false });
+    }
+
+    if (this.territoryByGroups == 'Marly')
+    {
+      alert.addInput({ type: 'radio', label: 'Marly', value: 'Marly', checked: true });
+    } else {
+      alert.addInput({ type: 'radio', label: 'Marly', value: 'Marly', checked: false });
+    }
+
+    if (this.territoryByGroups == 'Matran')
+    {
+      alert.addInput({ type: 'radio', label: 'Matran', value: 'Matran', checked: true });
+    } else {
+      alert.addInput({ type: 'radio', label: 'Matran', value: 'Matran', checked: false });
+    }
+
+    if (this.territoryByGroups == 'Morat')
+    {
+      alert.addInput({ type: 'radio', label: 'Morat', value: 'Morat', checked: true });
+    } else {
+      alert.addInput({ type: 'radio', label: 'Morat', value: 'Morat', checked: false });
+    }
+
+    if (this.territoryByGroups == 'Schönberg')
+    {
+      alert.addInput({ type: 'radio', label: 'Schönberg', value: 'Schönberg', checked: true });
+    } else {
+      alert.addInput({ type: 'radio', label: 'Schönberg', value: 'Schönberg', checked: false });
+    }
+
+    alert.addButton('Cancelar');
+    alert.addButton({
+      text: 'Ok',
+      handler: data => {
+        this.territoryByGroups = data;
+        if (data == 'Todos') {
+          this.territoryList = this.territoryData.getTerritoryList();
+        } else {
+          this.territoryList = this.territoryData.getTerritoriesByGroups(data);
+        }
+      }
+    });
+    alert.present();
   }
 
   // Show more App option
-  moreAppOption(){
+  moreAppOption() {
     let action = this.actionCtrl.create({
       buttons: [
         {
@@ -56,21 +126,21 @@ export class HomePage {
   }
 
   // Show more territory option
-  moreTerritoryOption(territoryId){
+  moreTerritoryOption(territoryId) {
     let action = this.actionCtrl.create({
       buttons: [
         {
           text: 'Residentes',
           icon: !this.platform.is('ios') ? 'person' : null,
           handler: () => {
-           this.navCtrl.push(ResidentListPage, {territoryId: territoryId});
+            this.navCtrl.push(ResidentListPage, { territoryId: territoryId });
           }
         },
         {
           text: 'Editar',
           icon: !this.platform.is('ios') ? 'create' : null,
           handler: () => {
-            this.navCtrl.push(TerritoryDetailPage, {territoryId: territoryId});
+            this.navCtrl.push(TerritoryDetailPage, { territoryId: territoryId });
           }
         },
         {
@@ -92,11 +162,10 @@ export class HomePage {
                   text: 'Remover',
                   role: 'destructive',
                   handler: data => {
-                    if (data.text == 'REMOVER')
-                    {
+                    if (data.text == 'REMOVER') {
                       this.territoryData.removeTerritory(territoryId);
                     } else {
-                      
+
                     }
                   }
                 },
