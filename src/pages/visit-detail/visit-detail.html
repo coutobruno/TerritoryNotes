@@ -31,17 +31,18 @@
       <ion-label floating>Observações</ion-label>
       <ion-textarea rows="10" #remarks formControlName="remarks" type="text" [class.invalid]="!updateVisitForm.controls.remarks.valid && updateVisitForm.controls.remarks.dirty">
       </ion-textarea>
-
-      <!-->Error Messages <-->
-        <ion-item class="error-message" *ngIf="!updateVisitForm.controls.date.valid && (dateChanged || submitAttempt)">
-          <p>Falta a data</p>
-        </ion-item>
-
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!updateVisitForm.controls.result.valid && newVisitForm.controls.result.dirty">
-      <p>Falta o resultado</p>
     </ion-item>
 
-    <button ion-button block color="app" type="submit">Atualisar a visita</button>
+    <!-->Error Messages
+    <-->
+      <ion-item no-lines class="error-message" *ngIf="!updateVisitForm.controls.date.valid && (dateChanged || submitAttempt)">
+        <p>Falta a data</p>
+      </ion-item>
+
+      <ion-item no-lines class="error-message" *ngIf="!updateVisitForm.controls.result.valid && newVisitForm.controls.result.dirty">
+        <p>Falta o resultado</p>
+      </ion-item>
+
+      <button ion-button block color="app" type="submit">Atualisar a visita</button>
   </form>
 </ion-content>

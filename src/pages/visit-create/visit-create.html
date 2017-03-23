@@ -25,23 +25,23 @@
         <ion-option>Não tinha tempo</ion-option>
         <ion-option>Esteve na visita</ion-option>
       </ion-select>
+    </ion-item>
 
-      <ion-item>
-        <ion-label floating>Observações</ion-label>
-        <ion-textarea rows="10" #remarks formControlName="remarks" type="text" [class.invalid]="!newVisitForm.controls.remarks.valid && newVisitForm.controls.remarks.dirty">
-        </ion-textarea>
-      </ion-item>
+    <ion-item>
+      <ion-label floating>Observações</ion-label>
+      <ion-textarea rows="10" #remarks formControlName="remarks" type="text" [class.invalid]="!newVisitForm.controls.remarks.valid && newVisitForm.controls.remarks.dirty">
+      </ion-textarea>
+    </ion-item>
 
-      <!--> Error Messages <-->
-      <ion-item class="error-message" *ngIf="!newVisitForm.controls.date.valid && (dateChanged || submitAttempt)">
+    <!-->Error Messages<-->
+      <ion-item no-lines class="error-message" *ngIf="!newVisitForm.controls.date.valid && (dateChanged || submitAttempt)">
         <p>Falta a data</p>
       </ion-item>
 
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!newVisitForm.controls.result.valid && newVisitForm.controls.result.dirty">
-      <p>Falta o resultado</p>
-    </ion-item>
+      <ion-item no-lines class="error-message" *ngIf="!newVisitForm.controls.result.valid && newVisitForm.controls.result.dirty">
+        <p>Falta o resultado</p>
+      </ion-item>
 
-    <button ion-button block color="app" type="submit">Aditionar nova visita</button>
+      <button ion-button block color="app" type="submit">Aditionar nova visita</button>
   </form>
 </ion-content>
