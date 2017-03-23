@@ -41,7 +41,7 @@ export class ResidentDetailPage {
       name: [this.residentName, Validators.required],
       address: [this.residentAddress, Validators.required],
       number: [this.residentNumber, Validators.required],
-      floor: [this.residentFloor, Validators.required],
+      floor: [this.residentFloor],
       npa: [this.residentNpa, Validators.required],
       location: [this.residentLocation, Validators.required]
     });
